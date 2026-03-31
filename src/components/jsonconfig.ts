@@ -44,7 +44,7 @@ export const accordionItems = [
         layerName: "EDUCACIO_ZONES_SECUNDARIA",
         field: "NOM_ZONA",
         value: "Lleida (taronja)",
-        conditionOperator: "ILIKE 'value'",
+        conditionOperator: "",
         showCard: false
       },
       submitLabel: "Ejecutar",
@@ -65,7 +65,7 @@ export const accordionItems = [
         layerName: "TEST_EDUCACIO_OFERTA_ESCOLAR",
         field: "",
         value: "",
-        conditionOperator: "ILIKE 'value'",
+        conditionOperator: "",
         operator: "OR",
         type: "cercle",
         geom: [[0.612820, 41.615240], 20000],
