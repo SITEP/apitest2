@@ -17,7 +17,7 @@ export default function Menu() {
 
     return (
         <Sheet modal={false}>
-            <SheetTrigger className="flex items-center gap-2">
+            <SheetTrigger className="flex items-center gap-2 hover:bg-accent px-2 h-6.5">
                 <List size={20} />
                 Menu
             </SheetTrigger>
@@ -50,7 +50,8 @@ export default function Menu() {
 
                     <TabsContent value="respuesta" className="flex-1 overflow-y-auto px-3">
                         <JsonEditorComponent
-                            value={iframeResponse}
+                            value={iframeResponse} // usa el JSON grande generado
+                            defaultMode="tree"
                             onChange={console.log}
                         />
                     </TabsContent>

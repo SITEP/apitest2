@@ -25,8 +25,8 @@ export const accordionItems = [
     content: {
       initialFormData: {
         layerName: "EDUCACIO_ZONES_SECUNDARIA",
-        elementID: "354",
-        showCard: false
+        elementID: 74,
+        showCard: true
       },
       submitLabel: "Ejecutar",
       buildParams: (data: any) => [
@@ -44,6 +44,7 @@ export const accordionItems = [
         layerName: "EDUCACIO_ZONES_SECUNDARIA",
         field: "NOM_ZONA",
         value: "Lleida (taronja)",
+        conditionOperator: "ILIKE 'value'",
         showCard: false
       },
       submitLabel: "Ejecutar",
@@ -51,6 +52,7 @@ export const accordionItems = [
         data.layerName,
         data.field,
         data.value,
+        data.conditionOperator,
         data.showCard
       ]
     }
@@ -62,8 +64,9 @@ export const accordionItems = [
       initialFormData: {
         layerName: "TEST_EDUCACIO_OFERTA_ESCOLAR",
         field: "",
-        operator: "ILIKE 'value'",
         value: "",
+        conditionOperator: "ILIKE 'value'",
+        operator: "OR",
         type: "cercle",
         geom: [[0.612820, 41.615240], 20000],
         epsg: "EPSG:4326",
@@ -76,6 +79,7 @@ export const accordionItems = [
           layerName: formData.layerName,
           field: formData.field,
           value: formData.value,
+          conditionOperator: formData.conditionOperator,
           operator: formData.operator,
           type: formData.type,
           geom: formData.geom,
@@ -192,11 +196,9 @@ export const accordionItems = [
       },
       submitLabel: "Cercar adreça",
       buildParams: (formData: any) => [
-        {
-          search: formData.search,
-          size: Number(formData.size),
-          layers: formData.layers
-        }
+        formData.search,
+        Number(formData.size),
+        formData.layers
       ]
     }
   },
@@ -264,9 +266,7 @@ export const accordionItems = [
         },
         epsg: "EPSG:4326",
         params: {
-          NOM_CENTRE: "Escola Example",
-          CODI_MUNICIPI: "08019",
-          TIPUS: "Escola bressol"
+          ZEPA: "Escola Example"
         }
       },
       submitLabel: "Ejecutar",
@@ -438,6 +438,13 @@ export const accordionItems = [
     }
   },
   {
+    value: "closeInfoPunt",
+    title: "Close Info Point",
+    content: {
+      submitLabel: "Close Info Point"
+    }
+  },
+  {
     value: "drawCircle",
     title: "Draw Circle",
     content: {
@@ -478,8 +485,8 @@ export const accordionItems = [
     }
   },
   {
-    value: "getFeaturesInfo",
-    title: "Get Features info",
+    value: "getFeatureInfo",
+    title: "Get Feature Info",
     content: {
       initialFormData: {
         layerNames: ["EDUCACIO_ZONES_SECUNDARIA", "EDUCACIO_AREESTERRITORIALS"],
@@ -488,11 +495,9 @@ export const accordionItems = [
       },
       submitLabel: "Ejecutar",
       buildParams: (data: any) => [
-        {
-          layerNames: data.layerNames,
-          coords: data.coords,
-          epsg: data.epsg
-        }
+        data.layerNames,
+        data.coords,
+        data.epsg
       ]
     }
   },
@@ -508,8 +513,8 @@ export const accordionItems = [
     }
   },
   {
-    value: "selectFeature",
-    title: "Select Feature",
+    value: "selectFeatures",
+    title: "Select Features",
     content: {
       initialFormData: {
         layerName: "RESIDUS_CONSTRUCCIO",

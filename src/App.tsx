@@ -12,10 +12,10 @@ export function App() {
     <AppProvider>
       <div className="flex min-h-svh flex-col text-sm!">
 
-        <div className="flex w-full items-center justify-between px-3 py-1 border-b">
+        <div className="flex w-full items-center justify-between px-3 border-b">
           <Menu />
           <h1 className="font-medium">API Testing!</h1>
-          <a className="text-blue-500 hover:underline" href="guia-api.pdf" target="_blank" rel="noopener noreferrer">
+          <a className="text-blue-500 hover:underline hover:bg-accent px-2 h-6.5" href="manual-api-v18.pdf" target="_blank" rel="noopener noreferrer">
             Manual
           </a>
         </div>
