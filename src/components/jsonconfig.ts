@@ -517,14 +517,20 @@ export const accordionItems = [
     title: "Select Features",
     content: {
       initialFormData: {
-        layerName: "RESIDUS_CONSTRUCCIO",
-        filter: {},
-        operator: "OR",
-        type: "cercle",
-        geom: [[0.61282, 41.61524], 20000],
-        epsg: "EPSG:4326",
-        zoom: false,
-        styleName: "ResCon"
+        "layerName": "EQUIPAMENTS",
+        "filter": {},
+        "operator": "OR",
+        "type": "cercle",
+        "geom": [
+          [
+            0.61282,
+            41.61524
+          ],
+          20000
+        ],
+        "epsg": "EPSG:4326",
+        "zoom": false,
+        "styleName": "1029011_Test_equipament"
       },
       submitLabel: "Ejecutar",
       buildParams: (formData: any) => [
@@ -545,7 +551,11 @@ export const accordionItems = [
     value: "clearSelectedFeatures",
     title: "Clear Selected Features",
     content: {
-      submitLabel: "Ejecutar"
+      submitLabel: "Ejecutar",
+      initialFormData: {
+        layerName: "EQUIPAMENTS"
+      },
+      buildParams: (data: any) => [data.layerName]
     }
   },
   {
