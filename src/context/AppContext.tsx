@@ -1,3 +1,4 @@
+import { deepParse } from "@/lib/utils"
 import {
   createContext,
   useContext,
@@ -40,31 +41,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [iframeResponse, setIframeResponse] = useState<any>(null)
   const [lastMessage, setLastMessage] = useState<MessagePayload | null>(null)
 
-  /* ==============================
-     HELPERS
-  =============================== */
-
-  const deepParse = (obj: any): any => {
-    if (typeof obj !== "object" || obj === null) return obj
-
-    const result: Record<string, any> = {}
-
-    for (const key in obj) {
-      const value = obj[key]
-
-      if (typeof value === "string") {
-        try {
-          result[key] = JSON.parse(value)
-        } catch {
-          result[key] = value
-        }
-      } else {
-        result[key] = value
-      }
-    }
-
-    return result
-  }
 
   /* ==============================
      LISTENER iframe
@@ -100,6 +76,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     const iframe = document.getElementById("iframeMap") as HTMLIFrameElement | null
 
     iframe?.contentWindow?.postMessage(message, "*")
+
+    console.log("Mensaje enviado al iframe:", message)
   }
 
   /* ==============================

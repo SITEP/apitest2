@@ -27,7 +27,7 @@ export default function JsonEditorComponent({
       return 0;
     }
   }, [value]);
-  console.log("JSON size:", jsonSize, "bytes");
+  
   const isTooLargeForCode = jsonSize > MAX_JSON_SIZE;
 
   useEffect(() => {

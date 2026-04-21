@@ -10,15 +10,24 @@ import AccordionDemo from "./AccordionDemo"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import JsonEditorComponent from "./JsonEditorComponent"
 import { useAppContext } from "@/context/AppContext"
-import { List } from "@phosphor-icons/react"
+import { ListIcon, InfoIcon } from "@phosphor-icons/react"
+import { useState, useEffect } from "react"
 
 export default function Menu() {
-    const { iframeResponse, lastMessage } = useAppContext()
+    const { iframeResponse, lastMessage } = useAppContext();
+    const [hasNewResponse, setHasNewResponse] = useState(false);
+
+    useEffect(() => {
+        if (iframeResponse !== null) {
+            setHasNewResponse(true)
+        }
+    }, [iframeResponse])
+
 
     return (
         <Sheet modal={false}>
-            <SheetTrigger className="flex items-center gap-2 hover:bg-accent px-2 h-6.5">
-                <List size={20} />
+            <SheetTrigger className="flex items-center gap-2 hover:bg-accent px-2">
+                <ListIcon size={20} />
                 Menu
             </SheetTrigger>
 
@@ -39,7 +48,10 @@ export default function Menu() {
                 >
                     <TabsList className="mx-3">
                         <TabsTrigger value="entradas">Entradas</TabsTrigger>
-                        <TabsTrigger value="respuesta">Respuesta</TabsTrigger>
+                        <TabsTrigger onClick={() => setHasNewResponse(false)} value="respuesta">
+                            Respuesta
+                            <InfoIcon className={hasNewResponse ? "text-blue-600 animate-accordion-down" : ""} />
+                        </TabsTrigger>
                         <TabsTrigger value="enviado">Enviado</TabsTrigger>
                     </TabsList>
 

@@ -111,10 +111,10 @@ export default function DynamicApiForm({
                                 <option value="IS NULL">IS NULL · No té valor</option>
                                 <option value="IS NOT NULL">IS NOT NULL · Té valor</option>
                                 <option value="ILIKE 'value'">ILIKE 'value' · És igual a</option>
-                                <option value="ILIKE 'value%25'">ILIKE 'value%25' · Comença per</option>
-                                <option value="ILIKE '%25value'">ILIKE '%25value' · Acaba per</option>
-                                <option value="ILIKE '%25value%25'">ILIKE '%25value%25' · Conté</option>
-                                <option value="NOT ILIKE '%25value%25'">NOT ILIKE '%25value%25' · No conté</option>
+                                <option value="ILIKE 'value%'">ILIKE 'value%' · Comença per</option>
+                                <option value="ILIKE '%value'">ILIKE '%value' · Acaba per</option>
+                                <option value="ILIKE '%value%'">ILIKE '%value%' · Conté</option>
+                                <option value="NOT ILIKE '%value%'">NOT ILIKE '%value%' · No conté</option>
                             </select>
                         </label>
                     )}

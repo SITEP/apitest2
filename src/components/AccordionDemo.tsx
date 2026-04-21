@@ -14,6 +14,7 @@ import DynamicApiForm from "./DynamicApiForm"
 import { useAppContext } from "@/context/AppContext"
 import { accordionItems } from "./jsonconfig"
 import { useState, useMemo } from "react"
+import CercadorMoeForm from "./CercadorMoeForm"
 
 export default function AccordionDemo() {
   const {
@@ -55,9 +56,12 @@ export default function AccordionDemo() {
 
       <Accordion
         multiple={false}
-        onValueChange={(values : any) => setSelectedOperation(values)}
+        onValueChange={(values: any) => setSelectedOperation(values)}
         value={Array.isArray(selectedOperation) ? selectedOperation : []}
       >
+        {/* Cercador de Oferta Educativa */}
+        <CercadorMoeForm isActive={selectedOperation?.includes("cercadorMoe")} />
+        
         {filteredItems.map((item) => (
           <AccordionItem key={item.value} value={item.value}>
             <AccordionTrigger>{item.title}</AccordionTrigger>
@@ -69,6 +73,7 @@ export default function AccordionDemo() {
             </AccordionContent>
           </AccordionItem>
         ))}
+
       </Accordion>
     </div>
   )

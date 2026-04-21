@@ -44,7 +44,7 @@ export const accordionItems = [
         layerName: "EDUCACIO_ZONES_SECUNDARIA",
         field: "NOM_ZONA",
         value: "Lleida (taronja)",
-        conditionOperator: "",
+        conditionOperator: "ILIKE 'value'",
         showCard: false
       },
       submitLabel: "Ejecutar",
@@ -52,8 +52,8 @@ export const accordionItems = [
         data.layerName,
         data.field,
         data.value,
-        data.conditionOperator,
-        data.showCard
+        data.showCard,
+        data.conditionOperator
       ]
     }
   },
@@ -62,10 +62,10 @@ export const accordionItems = [
     title: "Simple Filter",
     content: {
       initialFormData: {
-        layerName: "TEST_EDUCACIO_OFERTA_ESCOLAR",
+        layerName: "EDUCACIO_OFERTA_ESCOLAR",
         field: "",
         value: "",
-        conditionOperator: "",
+        conditionOperator: "ILIKE 'value'",
         operator: "OR",
         type: "cercle",
         geom: [[0.612820, 41.615240], 20000],
@@ -97,15 +97,16 @@ export const accordionItems = [
       initialFormData: {
         layerName: "XT_GRAF_CATALEG_CARRETERES",
         filter: {
+          operator: "OR",
           filter: [
             {
               field: "FUNCIONAL",
-              operator: "ILIKE '%25value%25'",
+              operator: "ILIKE '%value%'",
               value: "Local"
             },
             {
               field: "COMARCA",
-              operator: "ILIKE '%25value%25'",
+              operator: "ILIKE '%value%'",
               value: "Alt Camp"
             }
           ]
@@ -190,16 +191,11 @@ export const accordionItems = [
     title: "Geocode",
     content: {
       initialFormData: {
-        search: "marinet 4 sabadell",
-        size: 10,
-        layers: "topo1,topo2,address,pk"
+        search: "Carrer d'Àlaba 5 B",
+        size: 1
       },
-      submitLabel: "Cercar adreça",
-      buildParams: (formData: any) => [
-        formData.search,
-        Number(formData.size),
-        formData.layers
-      ]
+      submitLabel: "Geocode adreça",
+      buildParams: (data: any) => [data.search, data.size]
     }
   },
   {
@@ -453,7 +449,7 @@ export const accordionItems = [
         radius: 20000,
         epsg: "EPSG:4326",
         drawStyle: {
-          color: '#c00000',
+          color: '#000000',
           width: 2,
           opacity: 20,
           borderType: 'solid'
@@ -517,20 +513,42 @@ export const accordionItems = [
     title: "Select Features",
     content: {
       initialFormData: {
-        "layerName": "EQUIPAMENTS",
+        "layerName": "EDUCACIO_OFERTA_ESCOLAR",
         "filter": {},
         "operator": "OR",
-        "type": "cercle",
+        "type": "poligon",
         "geom": [
           [
-            0.61282,
-            41.61524
+            291153.13513431314,
+            4620400.081960559
           ],
-          20000
+          [
+            312909.93593638565,
+            4619844.129792429
+          ],
+          [
+            312442.71407339594,
+            4598409.3465506295
+          ],
+          [
+            290384.98577849386,
+            4598742.71060178
+          ],
+          [
+            291153.13513431314,
+            4620400.081960559
+          ]
         ],
-        "epsg": "EPSG:4326",
+        "epsg": "EPSG:25831",
         "zoom": false,
-        "styleName": "1029011_Test_equipament"
+        "clusterStylesColor": {
+          "selected": null,
+          "unselected": "#535353"
+        },
+        "featureStyleNames": {
+          "selected": null,
+          "unselected": "1029011_Test_equipament"
+        }
       },
       submitLabel: "Ejecutar",
       buildParams: (formData: any) => [
@@ -543,7 +561,8 @@ export const accordionItems = [
           epsg: formData.epsg
         },
         formData.zoom,
-        formData.styleName
+        formData.clusterStylesColor,
+        formData.featureStyleNames
       ]
     }
   },
@@ -553,7 +572,7 @@ export const accordionItems = [
     content: {
       submitLabel: "Ejecutar",
       initialFormData: {
-        layerName: "EQUIPAMENTS"
+        layerName: "EDUCACIO_OFERTA_ESCOLAR"
       },
       buildParams: (data: any) => [data.layerName]
     }
