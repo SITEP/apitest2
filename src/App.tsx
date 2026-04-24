@@ -3,11 +3,6 @@ import { Menu } from "./components";
 import VisorSelector from "./components/VisorSelector";
 import { AppProvider } from "./context/AppContext";
 
-  //121962 equipaments
-  //122362 MOE
-  
-  //Token para MOE:
-  //eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodHRwczovL3ByZS5zaWcuZ2VuY2F0LmNhdC9hcGl0ZXN0Mi9pbmRleC5odG1sLzEyMjM2MiIsImlhdCI6MTc3NjY3NDUyMX0.DvtFPZvyVUuTN-T0bvBCZaOWKJKZzeE5rFAC0UVwmmo
 
 const defaultValue = import.meta.env.PROD
   ? "https://pre.sig.gencat.cat/visorHipermapa/?ID=1"

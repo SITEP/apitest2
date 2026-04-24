@@ -76,7 +76,6 @@ class CercadorMoeForm extends Component<{ isActive: boolean | undefined }, Cerca
                 }
                 break
             case "getFeatureInfo":
-                console.log("getFeatureInfo", parsedMessage)
                 if (parsedMessage.data && parsedMessage.data) {
                     this.step3(parsedMessage.data)
                 }
@@ -193,7 +192,7 @@ class CercadorMoeForm extends Component<{ isActive: boolean | undefined }, Cerca
                 },
                 {
                     "selected": null,
-                    "unselected": "1029011_Test_equipament"
+                    "unselected": null
                 }
             ]
         })
@@ -239,6 +238,10 @@ class CercadorMoeForm extends Component<{ isActive: boolean | undefined }, Cerca
     clearForm = () => {
         this.setState({ address: "", radius: 1, withCoords: false })
         this.sendMessageToIframe({
+            "functionName": "deleteAllDrawings",
+            "parameters": []
+        })
+        this.sendMessageToIframe({
             "functionName": "clearSelectedFeatures",
             "parameters": [
                 "EDUCACIO_OFERTA_ESCOLAR"
@@ -270,12 +273,14 @@ class CercadorMoeForm extends Component<{ isActive: boolean | undefined }, Cerca
                                 <InputGroupInput
                                     disabled={withCoords}
                                     id="block-end-input"
+                                    value={this.state.address}
                                     onChange={this.addresChange}
-                                    placeholder="Carrer d'Àlaba 5 B" />
+                                    placeholder="Carrer de Faus 2" />
                                 <InputGroupAddon align="inline-end">
                                     <InputGroupButton
                                         onClick={this.toggleWithCoords}
-                                        className={`p-0 min-w-11 border-l-input ${withCoords ? 'text-green-500' : 'text-red-500'}`}>
+                                        variant="link"
+                                        className={`p-0 cursor-pointer min-w-11 border-l-input ${withCoords ? 'text-green-500' : 'text-red-500'}`}>
                                         <GpsFixIcon size={18} />
                                     </InputGroupButton>
                                 </InputGroupAddon>

@@ -1,25 +1,6 @@
 // 📦 Config JSON
 export const accordionItems = [
   {
-    value: "validateApi",
-    title: "Validate API",
-    content: {
-      initialFormData: {
-        token: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0LzIiLCJpYXQiOjE3MTgwMjY4NTB9.-1enTeVcqnqeAopYHAPEajX85_Q60T2pQZeU7NWr3Tc3"
-      },
-      submitLabel: "Validar API",
-      customFields: [
-        {
-          name: "token",
-          label: "API Token",
-          type: "textarea",
-          rows: 5
-        }
-      ],
-      buildParams: (data: any) => [data.token]
-    }
-  },
-  {
     value: "goToElementID",
     title: "Go to Element by ID",
     content: {

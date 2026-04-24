@@ -15,6 +15,7 @@ import { useAppContext } from "@/context/AppContext"
 import { accordionItems } from "./jsonconfig"
 import { useState, useMemo } from "react"
 import CercadorMoeForm from "./CercadorMoeForm"
+import ValidateApiForm from "./ValidateApiForm"
 
 export default function AccordionDemo() {
   const {
@@ -36,6 +37,18 @@ export default function AccordionDemo() {
         item.title.toLowerCase().includes(term) ||
         item.value.toLowerCase().includes(term)
     )
+  }, [search])
+
+  const showCercadorMoeForm = useMemo(() => {
+    const term = search.trim().toLowerCase()
+
+    return !term || "cercadormoe".includes(term)
+  }, [search])
+
+  const showValidateApiForm = useMemo(() => {
+    const term = search.trim().toLowerCase()
+
+    return !term || "validateapi".includes(term)
   }, [search])
 
   return (
@@ -60,8 +73,15 @@ export default function AccordionDemo() {
         value={Array.isArray(selectedOperation) ? selectedOperation : []}
       >
         {/* Cercador de Oferta Educativa */}
-        <CercadorMoeForm isActive={selectedOperation?.includes("cercadorMoe")} />
-        
+        {showCercadorMoeForm && (
+          <CercadorMoeForm isActive={selectedOperation?.includes("cercadorMoe")} />
+        )}
+
+        {/* Validate API */}
+        {showValidateApiForm && (
+          <ValidateApiForm />
+        )}
+
         {filteredItems.map((item) => (
           <AccordionItem key={item.value} value={item.value}>
             <AccordionTrigger>{item.title}</AccordionTrigger>
