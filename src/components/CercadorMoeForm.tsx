@@ -130,15 +130,9 @@ class CercadorMoeForm extends Component<{ isActive: boolean | undefined }, Cerca
         const { utm } = this.state
         if (!utm) return
 
-        const zonesSet = new Set([
-            "EDUCACIO_AREESTERRITORIALS",
-            "EDUCACIO_ZONES_SECUNDARIA",
-            "EDUCACIO_ZONES_PRIMARIA"
-        ]);
-
         const visibleLayerNames = data.flatMap((group: any) =>
-            group.children
-                .filter((layer: any) => layer.visible && zonesSet.has(layer.name))
+            (group.children ?? [])
+                .filter((layer: any) => layer.visible && layer.name !== "EDUCACIO_OFERTA_ESCOLAR")
                 .map((layer: any) => layer.name)
         );
 
@@ -154,6 +148,7 @@ class CercadorMoeForm extends Component<{ isActive: boolean | undefined }, Cerca
     }
 
     step3 = (featuresInfo: any) => {
+        console.log(featuresInfo)
         const feature = featuresInfo?.features?.[0];
 
         if (!feature?.geometry?.coordinates) return [];
